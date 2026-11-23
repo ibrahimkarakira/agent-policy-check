@@ -1,0 +1,25 @@
+name: Rule request
+description: A limit you expect your agent config to enforce that the tool cannot check yet.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: expectation
+    attributes:
+      label: The expectation, in one line
+      description: For example "never run rm -rf" or "only MCP servers: github, filesystem".
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options: [Claude Code, Codex, MCP, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Which config keys enforce it, with a vendor doc link
+      description: Use a synthetic example config.
+    validations:
+      required: true
