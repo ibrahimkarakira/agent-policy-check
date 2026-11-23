@@ -1,0 +1,9 @@
+PASS          claude  no-rm (never-run)
+    evidence: .claude/settings.json permissions.deny = ["Bash(rm -rf *)"]
+    caveat: Deny rules match the command form, not every way to delete files
+    docs: https://code.claude.com/docs/en/permissions
+FAIL          claude  no-yolo (no-bypass): NO_MECHANISM
+    evidence: .claude/settings.json permissions.disableBypassPermissionsMode = null
+    docs: https://code.claude.com/docs/en/settings-reference
+UNVERIFIABLE  codex   hooks (hooks-fail-closed): HOOK_SCRIPT_OPAQUE
+summary: 1 pass, 1 fail, 1 unverifiable
