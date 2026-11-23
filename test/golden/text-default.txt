@@ -1,0 +1,4 @@
+PASS          claude  no-rm (never-run)
+FAIL          claude  no-yolo (no-bypass): NO_MECHANISM
+UNVERIFIABLE  codex   hooks (hooks-fail-closed): HOOK_SCRIPT_OPAQUE
+summary: 1 pass, 1 fail, 1 unverifiable
