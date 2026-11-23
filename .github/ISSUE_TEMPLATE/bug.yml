@@ -1,0 +1,38 @@
+name: Bug report
+description: The tool reports something wrong, crashes, or a pass/fail is incorrect.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: If the bug is a false pass (a limit reported as enforced when it is not), report it privately instead. See SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `agent-policy-check --version`
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command you ran
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Synthetic config that reproduces it
+      description: Invent a minimal config. Do not paste a real one with private paths, server names or tokens.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual output
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS and Node version
