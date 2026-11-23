@@ -1,2 +1,5 @@
+# Store and check out text as LF on every OS, so a Windows edit (core.autocrlf=true, npm) never rewrites every line of a file.
+* text=auto eol=lf
+
 # Golden files are compared byte for byte; keep them LF on every checkout.
 test/golden/** text eol=lf
