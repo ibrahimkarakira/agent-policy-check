@@ -16,7 +16,10 @@ export type ReasonCode =
   | 'NO_CONFIG_FOUND'
   | 'SETTINGS_PARSE_ERROR'
   | 'SETTINGS_NOT_READ'
-  | 'SETTINGS_VALUE_SKIPPED';
+  | 'SETTINGS_VALUE_SKIPPED'
+  // A rule names the command but in `allow` or `ask`, not `deny`, or a `deny` rule matches only
+  // the bare command or only some of its arguments (`Bash(rm -rf /tmp *)`), not every use.
+  | 'RULE_TOO_WEAK';
 
 // The part of a Fact a finding cites. value is undefined when the key is absent.
 export type Evidence = Pick<Fact, 'file' | 'key' | 'value'>;
