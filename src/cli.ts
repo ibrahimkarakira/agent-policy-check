@@ -1,4 +1,6 @@
+import { readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
+import { parseExpectations } from './parse/expectations.ts';
 
 // Replaced at build time from package.json by scripts/build.mjs.
 declare const __VERSION__: string;
@@ -17,8 +19,9 @@ Commands:
   explain      show evidence keys, vendor docs and known limits for a rule
 
 Options:
-  -h, --help     show this help
-  -v, --version  print the version
+  --expect <file>  expectations file (default agent-expectations.txt)
+  -h, --help       show this help
+  -v, --version    print the version
 `;
 
 const COMMANDS = new Set(['check', 'init', 'list-rules', 'explain']);
@@ -36,6 +39,7 @@ function main(argv: string[]): number {
       allowPositionals: true,
       strict: true,
       options: {
+        expect: { type: 'string', default: 'agent-expectations.txt' },
         help: { type: 'boolean', short: 'h' },
         version: { type: 'boolean', short: 'v' },
       },
@@ -56,6 +60,21 @@ function main(argv: string[]): number {
   const command = parsed.positionals[0] ?? 'check';
   if (!COMMANDS.has(command)) {
     return usageError(`unknown command: ${command}`);
+  }
+  if (command === 'check') {
+    const file = parsed.values.expect;
+    let source: string;
+    try {
+      source = readFileSync(file, 'utf8');
+    } catch (error: unknown) {
+      return usageError(`cannot read expectations file ${file}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+    const { errors } = parseExpectations(source);
+    if (errors.length > 0) {
+      process.stderr.write(errors.map((e) => `${file}: ${e}
+`).join(''));
+      return EXIT_USAGE;
+    }
   }
   return usageError(`${command} is not implemented yet`);
 }
