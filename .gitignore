@@ -1,3 +1,6 @@
 node_modules/
 dist/
 *.tgz
+
+# Fixture files; a global git exclude often ignores this name.
+!corpus/**/.claude/settings.local.json

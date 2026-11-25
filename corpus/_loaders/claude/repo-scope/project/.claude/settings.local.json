@@ -1,0 +1,4 @@
+{
+  "permissions": { "defaultMode": "bypassPermissions" },
+  "modelPicker": { "rows": ["model-l"], "replace": false }
+}

@@ -13,7 +13,10 @@ export type ReasonCode =
   | 'MANAGED_NOT_PROVIDED'
   | 'HOOK_SCRIPT_OPAQUE'
   | 'PLATFORM_UNSUPPORTED'
-  | 'NO_CONFIG_FOUND';
+  | 'NO_CONFIG_FOUND'
+  | 'SETTINGS_PARSE_ERROR'
+  | 'SETTINGS_NOT_READ'
+  | 'SETTINGS_VALUE_SKIPPED';
 
 // The part of a Fact a finding cites. value is undefined when the key is absent.
 export type Evidence = Pick<Fact, 'file' | 'key' | 'value'>;
