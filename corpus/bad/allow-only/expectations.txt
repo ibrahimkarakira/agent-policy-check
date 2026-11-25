@@ -1,0 +1,1 @@
+[no-rm] never run rm -rf
