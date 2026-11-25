@@ -1,0 +1,4 @@
+{
+  "permissions": { "defaultMode": "auto" },
+  "modelPicker": { "rows": ["model-p"] }
+}

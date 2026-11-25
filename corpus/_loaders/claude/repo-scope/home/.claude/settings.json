@@ -1,0 +1,4 @@
+{
+  "permissions": { "defaultMode": "default" },
+  "modelPicker": { "rows": ["model-a", "model-b"], "replace": true }
+}
